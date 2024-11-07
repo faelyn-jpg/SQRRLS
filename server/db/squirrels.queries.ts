@@ -7,7 +7,11 @@ export async function getAllSquirrels(db = connection): Promise<Squirrel[]> {
   return await db('squirrels').select('*')
 }
 
-export function getSquirrelById(id: string | number) {
-  throw new Error('Function not implemented.')
+export async function getSquirrelById(id: number|string): Promise<Squirrel> {
+
+  const sqrl = await connection('squirrels')
+    .where('id',id)
+    .select('id','name','class','catch_phrase','bio')
+    .first()
+  return sqrl
 }
-//MF! why!! ^^Type 'QueryBuilder' is missing the following properties from type 'Squirrel[]': length, pop, push, concat, and 28 more.ts(2740)
