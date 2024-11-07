@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Squirrel } from '../../models/squirrel'
 import { Link } from 'react-router-dom'
 
-//hardcoded initial data - eventually this will come from an API call
+//hardcoded initial data - eventually this will come from an API call which calls getSquirrelById()
       const initialSquirrel: Squirrel = {
         id: 4,
         name: 'Whiskers',
@@ -21,6 +21,7 @@ import { Link } from 'react-router-dom'
 
 function Profile() {
   const [squirrel, setSquirrel] = useState<Squirrel>(initialSquirrel)
+      //^^ TS is angry because we're not yet calling setSquirrel - ToDo
 
   return (
     <div className="profile">
@@ -42,7 +43,7 @@ function Profile() {
           <p className="bio">{squirrel.bio}</p>
 
           <div className="squirrel-class">
-            <strong>Squirrel Class:</strong> {squirrel.class}
+            <b>Squirrel Class:</b> {squirrel.class}
           </div>
 
           <div className="compatible-squirrels">
