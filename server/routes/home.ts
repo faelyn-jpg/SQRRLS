@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
   const { id } = req.params
   try {
     const squirrel = await db.getSquirrelById(id)
-    if (squirrel) {
+    if (squirrel !== null) {
       res.json(squirrel)
     } else {
       res.status(404).json({ message: 'Squirrel not found' })
