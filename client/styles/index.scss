@@ -1,6 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+$--navigation-width: 66px;
+$--theme-background: #ff7f51;
+$--box-background: #ff9b54;
+$--colour-1: #ce4257;
+$--colour-2: #720026;
+$--colour-3: #4d000a;
+
+* ::after ::before{ 
+  box-sizing: inherit;
+}
 
 html, 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Source Sans 3','Montserrat', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  background-color: $--theme-background;
+}
+
+// .background { 
+//   // background-image: url(../../images/title-background-with-blur.png);
+//   z-index: -30;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-attachment: fixed;
+//   background-position: center;
+//   background-color: $--theme-background;
+// }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto $--navigation-width;
+  width: calc(80% - $--navigation-width);  
+  justify-content: space-between;
+  transition: width .3s, max-width .3s;
+}
+
+
+.main {
+  box-sizing: border-box;
+  display: flex;
+  border: 30px solid $--colour-3;
+  padding: 8px 12px;
+  background-color: $--box-background;
+  border-radius: 25px;
 }
