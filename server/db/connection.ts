@@ -7,3 +7,8 @@ const env = (process.env.NODE_ENV as Environment) || 'development'
 const connection = knex(config[env])
 
 export default connection
+
+//we write our db call functions here
+export async function getAllSquirrels() {
+    //do the thing
+}

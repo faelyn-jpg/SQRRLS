@@ -16,3 +16,6 @@ router.get('/', async (req, res) => {
 })
 
 export default router
+
+
+//try catch api things here that call db functions in ___.ts
