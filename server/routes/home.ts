@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
 
 // Route to get a squirrel by ID
 router.get('/:id', async (req, res) => {
-  const id = Number(req.params.id)
+  // const id = Number(req.params.id)
+  const {id} = req.params
   try {
     const squirrel = await db.getSquirrelById(id)
 
