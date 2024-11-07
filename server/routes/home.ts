@@ -7,7 +7,7 @@ const router = Router()
 router.get('/', async (req, res) => {
   try {
     const sqrrls = await db.getAllSquirrels()
-
+    console.log('Backend: ', { sqrrls })
     res.json({ sqrrls })
   } catch (error) {
     console.log(error)

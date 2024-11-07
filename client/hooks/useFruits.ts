@@ -13,7 +13,7 @@ export function useFruits() {
     queryKey: ['squirrel'],
     queryFn: async () => {
       const res = await request.get('api/v1/squirrels')
-      console.log(res.body)
+      console.log(res.body.sqrrls)
       return res.body.sqrrls as Squirrel[]
     },
   })
