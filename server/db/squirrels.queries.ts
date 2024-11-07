@@ -13,7 +13,5 @@ export async function getSquirrelById(id: number|string): Promise<Squirrel> {
     .where('id',id)
     .select('id','name','class','catch_phrase','bio')
     .first()
-
-  // throw new Error('Function not implemented.')
   return sqrl
 }
