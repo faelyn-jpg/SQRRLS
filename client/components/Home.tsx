@@ -1,14 +1,25 @@
-// import { useFruits } from '../hooks/useFruits.ts'
+import { Squirrel } from '../../models/squirrel.ts'
+import { useFruits as useSquirrel } from '../hooks/useFruits.ts'
 
 function Home() {
-  // const { data } = useFruits()
-
+  const { data: sqrrls, isPending, isError, error } = useSquirrel()
+  if (isPending) {
+    return 'Loading...'
+  }
+  if (isError) {
+    return <div>Error! {error.message}</div>
+  }
   return (
     <>
       <div className="home">
         <h1>!</h1>
-        {/* <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul> */}
-        <img src="../../sqrrls/sqrrl1.png"></img>
+        <ul>
+          {sqrrls &&
+            sqrrls.map((sqrrl: Squirrel) => (
+              <li key={sqrrl.name}>{`${sqrrl.name}`}</li>
+            ))}
+        </ul>
+        {/* <img src="../../sqrrls/sqrrl1.png" alt="" /> */}
       </div>
     </>
   )
