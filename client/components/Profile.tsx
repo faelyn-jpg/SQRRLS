@@ -16,26 +16,25 @@ import useCompatibility from '../hooks/useCompatibility'
 function Profile() {
   // hardcoded compatible squirrels
   //   eventually this will come from some database query or similar - getCompatableSquirrels()
-  const compatibleSquirrels = [
-    { id: 2, name: 'Peanut' },
-    { id: 8, name: 'Sassy' },
-    { id: 11, name: 'Chestnut' },
-  ]
 
+  // console.log(compat)
   const { id } = useParams()
   const { data: squirrel, isPending, isError, error } = useSquirrelById(id)
 
-  // const { data: compatibleSquirrels, isPending: compatPend,
-  //   isError: compatErr, error: compatErrDets } = useCompatibility(
-  //     squirrel ? [squirrel.class] : []
-  //   )
-  const { data: compat } = useCompatibility(squirrel ? [squirrel.class] : [])
-  console.log(compat)
+  // const {
+  //   data: compatibleSquirrels,
+  //   isPending: compatPend,
+  //   isError: compatErr,
+  //   error: compatErrDets,
+  // } = useCompatibility(squirrel.class)
 
   if (isPending) return 'Loading...'
-  // if (isPending || compatPend) return 'Loading...'
   if (isError) return `Error: ${error.message}`
-  // if (compatErr) return `Error: ${compatErrDets.message}`
+
+  // if (isPending || compatPend) return 'Loading...'
+  // if (compatErr || squirrel === undefined)
+  //   return `Error: ${compatErrDets.message}`
+
   if (!squirrel) return 'Squirrel not found :('
 
   return (
@@ -61,7 +60,18 @@ function Profile() {
           <div className="compatible-squirrels">
             <h3>Compatible Squirrel Companions</h3>
             <ul>
-              {compatibleSquirrels.map((compatSqrl) => (
+              {  const {
+    data: compatibleSquirrels,
+    isPending: compatPend,
+    isError: compatErr,
+    error,
+  } = useCompatibility(squirrel.class)
+  if (compatPend) return 'Loading...'
+  if (compatErr || squirrel === undefined)
+    return `Error: ${error.message}`
+
+}        
+              compatibleSquirrels.map((compatSqrl) => (
                 <li key={compatSqrl.id}>
                   <Link to={`/profile/${compatSqrl.id}`}>
                     {compatSqrl.name}
