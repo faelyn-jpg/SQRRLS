@@ -21,69 +21,59 @@ function Profile() {
   const { id } = useParams()
   const { data: squirrel, isPending, isError, error } = useSquirrelById(id)
 
-  // const {
-  //   data: compatibleSquirrels,
-  //   isPending: compatPend,
-  //   isError: compatErr,
-  //   error: compatErrDets,
-  // } = useCompatibility(squirrel.class)
+  const {
+    data: compatibleSquirrels,
+    isPending: compatPend,
+    isError: compatErr,
+    error: compatErrDets,
+  } = useCompatibility(squirrel.class)
 
   if (isPending) return 'Loading...'
   if (isError) return `Error: ${error.message}`
 
-  // if (isPending || compatPend) return 'Loading...'
-  // if (compatErr || squirrel === undefined)
-  //   return `Error: ${compatErrDets.message}`
+  if (isPending || compatPend) return 'Loading...'
+  if (compatErr || squirrel === undefined)
+    return `Error: ${compatErrDets.message}`
 
   if (!squirrel) return 'Squirrel not found :('
-
-  return (
-    <div className="profile">
-      <div className="profile-header">
-        <h1>{squirrel.name}</h1>
-        <p className="catch-phrase">`{squirrel.catch_phrase}`</p>
-      </div>
-
-      <div className="profile-content">
-        <div className="profile-image">
-          <img src={`/sqrrls/sqrrl${squirrel.id}.png`} alt={squirrel.name} />
+  if (compatibleSquirrels !== undefined && squirrel !== undefined) {
+    return (
+      <div className="profile">
+        <div className="profile-header">
+          <h1>{squirrel.name}</h1>
+          <p className="catch-phrase">`{squirrel.catch_phrase}`</p>
         </div>
 
-        <div className="profile-details">
-          <h2>About {squirrel.name}</h2>
-          <p className="bio">{squirrel.bio}</p>
-
-          <div className="squirrel-class">
-            <b>Squirrel Class:</b> {squirrel.class}
+        <div className="profile-content">
+          <div className="profile-image">
+            <img src={`/sqrrls/sqrrl${squirrel.id}.png`} alt={squirrel.name} />
           </div>
 
-          <div className="compatible-squirrels">
-            <h3>Compatible Squirrel Companions</h3>
-            <ul>
-              {  const {
-    data: compatibleSquirrels,
-    isPending: compatPend,
-    isError: compatErr,
-    error,
-  } = useCompatibility(squirrel.class)
-  if (compatPend) return 'Loading...'
-  if (compatErr || squirrel === undefined)
-    return `Error: ${error.message}`
+          <div className="profile-details">
+            <h2>About {squirrel.name}</h2>
+            <p className="bio">{squirrel.bio}</p>
 
-}        
-              compatibleSquirrels.map((compatSqrl) => (
-                <li key={compatSqrl.id}>
-                  <Link to={`/profile/${compatSqrl.id}`}>
-                    {compatSqrl.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="squirrel-class">
+              <b>Squirrel Class:</b> {squirrel.class}
+            </div>
+
+            <div className="compatible-squirrels">
+              <h3>Compatible Squirrel Companions</h3>
+              <ul>
+                {compatibleSquirrels.map((compatSqrl) => (
+                  <li key={compatSqrl.id}>
+                    <Link to={`/profile/${compatSqrl.id}`}>
+                      {compatSqrl.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default Profile
