@@ -64,7 +64,7 @@ function Profile() {
           <div className="compatible-squirrels">
             <h3>Compatible Squirrel Companions</h3>
             <ul>
-              {compatibleSquirrels.map((compatSqrl) => (
+              {compatibleSquirrels?.map((compatSqrl) => (
                 <li key={compatSqrl.id}>
                   <Link to={`/profile/${compatSqrl.id}`}>
                     {compatSqrl.name}
