@@ -8,14 +8,27 @@ import request from 'superagent'
 // import { getFruits } from '../apis/fruits.ts'
 import { Squirrel } from '../../models/squirrel.ts'
 
-export function useFruits() {
+export function useSquirrels() {
   return useQuery({
     queryKey: ['squirrel'],
     queryFn: async () => {
       const res = await request.get('api/v1/squirrels')
-      console.log(res.body.sqrrls)
+      // console.log(res.body.sqrrls)
       return res.body.sqrrls as Squirrel[]
     },
+  })
+}
+
+
+//hook for the individual squirrel
+export function useSquirrelById(id:string | number) {
+  return useQuery({
+    queryKey: ['squirrel', id],
+    queryFn: async () => {
+      const res = await request.get(`/api/v1/squirrels/${id}`)
+      // console.log(`api response: ${res.body}`)
+      return res.body as Squirrel
+    }
   })
 }
 

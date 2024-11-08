@@ -1,8 +1,8 @@
 import { Squirrel } from '../../models/squirrel.ts'
-import { useFruits as useSquirrel } from '../hooks/useFruits.ts'
+import { useSquirrels } from '../hooks/useSquirrels.ts'
 
 function Home() {
-  const { data: sqrrls, isPending, isError, error } = useSquirrel()
+  const { data: sqrrls, isPending, isError, error } = useSquirrels()
   if (isPending) {
     return 'Loading...'
   }

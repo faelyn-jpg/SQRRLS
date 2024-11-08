@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const id = Number(req.params.id)
   try {
+    // console.log(id)
     const squirrel = await db.getSquirrelById(id)
 
     if (!squirrel) {
