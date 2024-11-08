@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Squirrel } from '../../models/squirrel.ts'
 import { useSquirrels } from '../hooks/useSquirrels.ts'
 
@@ -16,7 +17,9 @@ function Home() {
         <ul>
           {sqrrls &&
             sqrrls.map((sqrrl: Squirrel) => (
-              <li key={sqrrl.name}>{`${sqrrl.name}`}</li>
+              <li key={sqrrl.name}>
+                <Link to={`/profile/${sqrrl.id}`}>{`${sqrrl.name}`}</Link>
+              </li>
             ))}
         </ul>
         {/* <img src="../../sqrrls/sqrrl1.png" alt="" /> */}
