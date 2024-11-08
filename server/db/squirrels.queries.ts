@@ -15,13 +15,12 @@ export async function getSquirrelById(id: number | string): Promise<Squirrel> {
   return sqrl
 }
 
-
-
 export async function getSquirrelsByClass(
-  classes: string[],
+  sqClass: string[],
 ): Promise<Squirrel[]> {
+  console.log(sqClass)
   const sqrrls = await connection('squirrels')
-    .whereIn('class', classes)
+    .whereIn('class', sqClass)
     .select('id', 'name')
   return sqrrls
 }
