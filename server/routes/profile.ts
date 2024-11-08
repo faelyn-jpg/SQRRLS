@@ -25,6 +25,8 @@ router.get('/', async (req, res) => {
   }
   try {
     const sqrrls = await db.getSquirrelsByClass(classes)
+    console.log('server thing' + sqrrls);
+    
     res.json({ sqrrls })
   } catch (error) {
     console.error('Error fetching squirrels:', error)

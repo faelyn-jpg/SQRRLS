@@ -7,7 +7,7 @@ export default function useCompatibility(sqrrlClass: string[]) {
     queryKey: ['squirrel'],
     queryFn: async () => {
       const res = await request.get('api/v1/profile').send({ sqrrlClass })
-      console.log(res.body.sqrrls)
+      console.log(`compatibility: ${res.body.sqrrls}`)
       return res.body.sqrrls as Squirrel[]
     },
   })
