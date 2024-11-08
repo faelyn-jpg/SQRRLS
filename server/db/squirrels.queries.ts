@@ -7,11 +7,19 @@ export async function getAllSquirrels(db = connection): Promise<Squirrel[]> {
   return await db('squirrels').select('*')
 }
 
-export async function getSquirrelById(id: number|string): Promise<Squirrel> {
-
+export async function getSquirrelById(id: number | string): Promise<Squirrel> {
   const sqrl = await connection('squirrels')
-    .where('id',id)
-    .select('id','name','class','catch_phrase','bio')
+    .where('id', id)
+    .select('id', 'name', 'class', 'catch_phrase', 'bio')
     .first()
   return sqrl
+}
+
+export async function getSquirrelsByClass(
+  classes: string[],
+): Promise<Squirrel[]> {
+  const sqrrls = await connection('squirrels')
+    .whereIn('class', classes)
+    .select('id', 'name')
+  return sqrrls
 }
