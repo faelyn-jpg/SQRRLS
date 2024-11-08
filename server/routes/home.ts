@@ -21,9 +21,12 @@ router.get('/:id', async (req, res) => {
   try {
     // console.log(id)
     const squirrel = await db.getSquirrelById(id)
-    
-    if (!squirrel) { res.status(404).json({ message: 'Squirrel not found' })
-    } else {res.status(200).json(squirrel)}
+
+    if (!squirrel) {
+      res.status(404).json({ message: 'Squirrel not found' })
+    } else {
+      res.status(200).json(squirrel)
+    }
   } catch (error) {
     console.error('Error fetching squirrel by ID:', error)
     res.status(500).json({ message: 'Error fetching squirrel' })
