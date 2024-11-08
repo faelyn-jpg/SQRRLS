@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 // import { Squirrel } from '../../models/squirrel'
 import { Link } from 'react-router-dom'
@@ -31,8 +30,6 @@ function Profile() {
   if (isPending) return 'Loading...'
   if (isError) return `Error: ${error.message}`
   if (!squirrel) return 'Squirrel not found :('
-
-  // const [squirrel, setSquirrel] = useState<Squirrel>(initialSquirrel)
 
   return (
     <div className="profile">
