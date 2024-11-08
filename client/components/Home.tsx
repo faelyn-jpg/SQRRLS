@@ -1,5 +1,5 @@
 import { Squirrel } from '../../models/squirrel.ts'
-import { useSquirrels } from '../hooks/useFruits.ts'
+import { useSquirrels } from '../hooks/useSquirrels.ts'
 
 function Home() {
   const { data: sqrrls, isPending, isError, error } = useSquirrels()

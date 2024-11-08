@@ -13,7 +13,7 @@ export function useSquirrels() {
     queryKey: ['squirrel'],
     queryFn: async () => {
       const res = await request.get('api/v1/squirrels')
-      console.log(res.body.sqrrls)
+      // console.log(res.body.sqrrls)
       return res.body.sqrrls as Squirrel[]
     },
   })
@@ -25,7 +25,8 @@ export function useSquirrelById(id:string | number) {
   return useQuery({
     queryKey: ['squirrel', id],
     queryFn: async () => {
-      const res = await request.get(`api/v1/squirrels/${id}`)
+      const res = await request.get(`/api/v1/squirrels/${id}`)
+      // console.log(`api response: ${res.body}`)
       return res.body as Squirrel
     }
   })

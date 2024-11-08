@@ -15,3 +15,4 @@ export async function getSquirrelById(id: number|string): Promise<Squirrel> {
     .first()
   return sqrl
 }
+
