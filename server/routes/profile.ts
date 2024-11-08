@@ -3,28 +3,31 @@ import * as db from '../db/squirrels.queries.ts'
 
 const router = Router()
 
-router.get('/', async (req, res) => {
-  const { sqrrlClass } = req.body
-  let classes: string[] = []
+router.get('/:sqClass', async (req, res) => {
+  const sqrrlClass = req.params.sqClass
+  let classes: string[] | string = []
   switch (sqrrlClass) {
     case 'A':
-      classes = ['A', 'B']
+      classes = 'AB'
       break
     case 'B':
-      classes = ['A', 'C']
+      classes = 'AC'
       break
     case 'C':
-      classes = ['B', 'C', 'E']
+      classes = 'BCE'
       break
     case 'D':
-      classes = ['D']
+      classes = 'D'
       break
     case 'E':
-      classes = ['C']
+      classes = 'C'
       break
   }
   try {
-    const sqrrls = await db.getSquirrelsByClass(classes)
+    console.log('array classes' + classes)
+
+    const sqrrls = await db.getSquirrelsByClass([...classes])
+
     res.json({ sqrrls })
   } catch (error) {
     console.error('Error fetching squirrels:', error)

@@ -21,7 +21,7 @@ export function useSquirrels() {
 
 
 //hook for the individual squirrel
-export function useSquirrelById(id:string | number) {
+export function useSquirrelById(id:string | number | undefined) {
   return useQuery({
     queryKey: ['squirrel', id],
     queryFn: async () => {
