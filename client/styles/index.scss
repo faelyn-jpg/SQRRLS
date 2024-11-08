@@ -49,8 +49,18 @@ body {
   background-color: $--box-background;
   border-radius: 25px;
 }
-
+.profile-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+.profile-details {
+  flex: 1;
+  min-width: 25rem;
+}
 .profile-image {
+  flex: 0 0 20rem;
   max-width: 20rem;
   max-height: 20rem;
   width: 100%;
