@@ -38,7 +38,7 @@ function Profile() {
 
       <div className="profile-content">
         <div className="profile-image">
-          <img src={`/sqrrls/sqrrl${squirrel.id}.png`} alt={squirrel.name} />
+          <img src={`/sqrrls/sqrrl${squirrel.id}.png`} alt={'Squirrel'} />
         </div>
 
         <div className="profile-details">
